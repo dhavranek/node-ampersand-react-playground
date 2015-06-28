@@ -10,8 +10,8 @@ export default React.createClass({
 			    <input id='menu-toggle' className='menu-toggle' type='checkbox'/>
 			    <label htmlFor='menu-toggle'>Menu</label>
 			    <ul className='list-unstyled list-inline cf'>
-			      <li>Labelr</li>
-			      <li><a href='/repos'>Repos</a></li>
+			      <li>MEOW MEOW MEOW</li>
+			      <li><a href='/repos'>RAWR</a></li>
 			      <li className='pull-right'><a href='/logout'>Logout</a></li>
 			    </ul>
 			  </nav>
