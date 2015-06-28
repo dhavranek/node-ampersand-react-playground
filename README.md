@@ -10,6 +10,7 @@ Heroku Toolbelt: https://toolbelt.heroku.com
 npm install
 npm run build
 npm run start-dev
+open 'http://localhost:PORT/'
 ```
 
 ## Heroku Deployment
