@@ -1,7 +1,7 @@
 {
-  "name": "TKJ",
-  "description": "This is a site to represent Tae Kim's life.",
-  "repository": "https://github.com/TaeKimJR/TaeKimJR.github.io",
+  "name": "NodeAmpersandReactBase",
+  "description": "This is a base site using Node for the backend, Ampersand + React for the frontend.",
+  "repository": "https://github.com/TaeKimJR/node-ampersand-react-base",
   "logo": "",
-  "keywords": ["tae", "kim", "jr"]
+  "keywords": []
 }
