@@ -9,10 +9,6 @@ Heroku Toolbelt: https://toolbelt.heroku.com
 ```
 npm install
 npm run build
-```
-
-## Running Locally
-```
 npm run start-dev
 ```
 
@@ -24,7 +20,7 @@ cd /path/to/project
 heroku create nameofproject
 ```
 
-### Deply the app
+### Deploy the app
 ```
 npm run build
 git add .
