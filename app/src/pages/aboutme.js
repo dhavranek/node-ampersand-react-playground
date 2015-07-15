@@ -1,14 +1,12 @@
 import React from 'react'
 
 export default React.createClass({
-	displayName: 'Login',
+	displayName: 'AboutMe',
 
 	render() {
 		return (
 			<div>
-				<header role='banner'>
-					<h1><a href='/aboutme'>hvrnk</a></h1>
-				</header>
+				<h4>jay havranek</h4>
 			</div>
 		)
 	}
