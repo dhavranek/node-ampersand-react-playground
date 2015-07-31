@@ -1,6 +1,6 @@
 import app from 'ampersand-app'
 import Router from './router'
-import Styles from './styles/main.styl'
+import Styles from './styles/style.less'
 
 window.app = app
 
