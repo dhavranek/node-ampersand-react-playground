@@ -1,14 +1,16 @@
-import app from 'ampersand-app'
-import Router from './router'
+import React from 'react'
+import Router from 'react-router'
+import Home from './pages/home'
 import Styles from './styles/style.less'
 
-window.app = app
 
-app.extend({
-  init(){
-    this.Router = new Router()
-    this.Router.history.start()
-  }
-})
+var { Route, NotFoundRoute } = Router;
 
-app.init()
+var routes = (
+ <Route handler={Home} path="/">
+ </Route>
+);
+
+Router.run(routes, function (Handler) {
+ React.render(<Handler/>, document.body);
+});
