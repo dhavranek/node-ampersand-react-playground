@@ -1,7 +1,7 @@
 {
-  "name": "NodeAmpersandReactBase",
-  "description": "This is a base site using Node for the backend, Ampersand + React for the frontend.",
-  "repository": "https://github.com/TaeKimJR/node-ampersand-react-base",
+  "name": "hvrnk",
+  "description": "This is a site.",
+  "repository": "https://github.com/hvrnk/portfolio",
   "logo": "",
   "keywords": []
 }

@@ -1,4 +1,3 @@
-# Node - Ampersand & React - Base Project
 ## Requirements
 ```
 Node: brew install node
