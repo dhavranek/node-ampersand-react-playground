@@ -6,7 +6,11 @@ export default React.createClass({
     return {
       fontSize: this.props.maxFontSize,
       top: 'auto',
-      left: 'auto'
+      left: 'auto',
+      maxTop: 0,
+      maxLeft: 0,
+      pageHeight: 0,
+      pageWidth: 0
     }
   },
 
@@ -14,12 +18,24 @@ export default React.createClass({
     window.addEventListener( 'scroll', this.updateFontSize );
     window.addEventListener( 'scroll', this.updateTextPosition );
 
-    var div = this.refs.text.getDOMNode();
-    var height = div.clientHeight;
-    var width = div.clientWidth;
+    this.centerHeaderAfterMount();
 
-    this.setState({ top: (window.innerHeight - height) / 2});
-    this.setState({ left: (window.innerWidth - width) / 2});
+    this.setState({ pageHeight: window.innerHeight });
+    this.setState({ pageWidth: window.innerWidth });
+  },
+
+  centerHeaderAfterMount() {
+    var container = this.refs.textContainer.getDOMNode();
+    var height = container.clientHeight;
+    var width = container.clientWidth;
+
+    var initialTop = (window.innerHeight - height) / 2;
+    var initialLeft = (window.innerWidth - width) / 2;
+
+    this.setState({ top: initialTop });
+    this.setState({ left: initialLeft });
+    this.setState({ maxTop: initialTop });
+    this.setState({ maxLeft: initialLeft });
   },
 
   updateFontSize (event) {
@@ -34,32 +50,42 @@ export default React.createClass({
   updateTextPosition (event) {
     var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
 
-    var text = this.refs.text.getDOMNode();
+    var textContainer = this.refs.textContainer.getDOMNode();
 
-    var top = (window.innerHeight - text.clientHeight) / 2;
-    var left = (window.innerWidth - text.clientWidth) / 2;
-    left = Math.max(0, left - scrollTop);
+    var top = this.state.maxTop - (this.state.maxTop / this.state.pageHeight) * scrollTop + scrollTop;
     top = Math.max(scrollTop, top);
-    
+
+    var left = this.state.maxLeft - (this.state.maxLeft / this.state.pageHeight) * scrollTop;
+    left = Math.max(left, 0);
+
     this.setState({ top: top });
     this.setState({ left: left });
   },
 
   render () {
     var divStyle = {
-      position: 'absolute',
-      top: this.state.top,
-      left: this.state.left
+      height: '100vh',
+      width: '100vw',
+      position: 'relative'
     };
 
-    var logoStyle = {
+    var textContainerStyle = {
+      position: 'absolute',
+      top: this.state.top,
+      left: this.state.left,
+      zIndex: 1000
+    };
+
+    var textStyle = {
       fontSize: this.state.fontSize,
       margin: 0
     };
 
     return (
-      <div ref="text" style={divStyle}>
-        <h1 style={logoStyle}>{this.props.children}</h1>
+      <div ref="div" style={divStyle} id="div1">
+        <div ref="textContainer" style={textContainerStyle}>
+          <h1 style={textStyle}>{this.props.children}</h1>
+        </div>
       </div>
     )
   }
